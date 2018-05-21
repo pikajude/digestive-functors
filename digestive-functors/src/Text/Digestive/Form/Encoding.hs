@@ -35,6 +35,10 @@ instance Show FormEncType where
     show UrlEncoded = "application/x-www-form-urlencoded"
     show MultiPart  = "multipart/form-data"
 
+instance Semigroup FormEncType where
+    UrlEncoded <> x = x
+    MultiPart <> _ = MultiPart
+
 
 --------------------------------------------------------------------------------
 -- Monoid instance for encoding types: prefer UrlEncoded, but fallback to
